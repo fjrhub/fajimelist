@@ -3,13 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.5",
+    "@tailwindcss/aspect-ratio": "^0.4.2",
     "dotenv": "^16.4.5",
     "next": "14.2.2",
     "next-auth": "^4.24.11",
