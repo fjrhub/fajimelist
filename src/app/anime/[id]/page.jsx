@@ -22,7 +22,7 @@ const Page = async ({ params: { id } }) => {
           {anime.data.title} - {anime.data.year}
         </h3>
         {!data && user && (
-          <CollectionButton anime_mal_id={id} user_email={user?.email} />
+          <CollectionButton anime_mal_id={id} user_email={user?.email} anime_title={anime.data.title} anime_image={anime.data.images.webp.image_url} />
         )}
       </div>
       <div className="pt-4 px-4 flex gap-2 text-color-primary overflow-x-auto ">
