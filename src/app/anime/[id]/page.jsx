@@ -85,7 +85,7 @@ const Page = async ({ params: { id } }) => {
         <h2 className="text-2xl font-semibold text-white mb-5">💬 Komentar Penonton</h2>
 
         {/* Kotak komentar */}
-        <div className="bg-[#1a1a1a] border border-gray-800 rounded-2xl p-5 shadow-lg space-y-6">
+        <div>
           <CommentBox anime_mal_id={id} />
 
           {user ? (
@@ -99,7 +99,7 @@ const Page = async ({ params: { id } }) => {
               />
             </div>
           ) : (
-            <p className="text-gray-400 text-sm text-center">
+            <p className="text-gray-400 text-sm p-9 text-center">
               Silakan login untuk menulis komentar.
             </p>
           )}
