@@ -8,10 +8,9 @@ const CommentInput = ({ anime_mal_id, user_email, username, anime_title, photo_u
   const [isCreated, setIsCreated] = useState(false)
   const router = useRouter()
 
-  const handleInput = (event) => setComment(event.target.value)
-
   const handlePosting = async (event) => {
     event.preventDefault()
+    if (!comment.trim()) return
 
     const data = { anime_mal_id, user_email, username, anime_title, comment, photo_url }
 
@@ -26,25 +25,38 @@ const CommentInput = ({ anime_mal_id, user_email, username, anime_title, photo_u
       setIsCreated(true)
       setComment('')
       router.refresh()
+      setTimeout(() => setIsCreated(false), 2500)
     }
   }
 
   return (
-    <div className="flex flex-col gap-2">
-      {isCreated && <p className="text-green-400">Komentar terkirim!</p>}
+    <form onSubmit={handlePosting} className="flex flex-col gap-4 mt-10">
+      {/* Notifikasi */}
+      {isCreated && (
+        <p className="text-green-400 text-sm bg-[#153d2b] px-3 py-2 rounded-lg border border-green-700">
+          ✅ Komentar berhasil dikirim!
+        </p>
+      )}
+
+      {/* Textarea */}
       <textarea
-        onChange={handleInput}
         value={comment}
+        onChange={(e) => setComment(e.target.value)}
         placeholder="Tulis pendapatmu di sini..."
-        className="w-full h-32 p-3 rounded-lg bg-[#1a1a1a] border border-gray-700 text-white resize-none"
+        className="w-full h-28 p-4 rounded-xl bg-[#1a1a1a] border border-gray-700 text-gray-100 resize-none 
+                   focus:outline-none focus:border-color-accent focus:ring-1 focus:ring-color-accent transition"
       />
-      <button
-        onClick={handlePosting}
-        className="w-40 py-2 px-3 bg-color-accent rounded-lg hover:opacity-80 transition"
-      >
-        Posting
-      </button>
-    </div>
+
+      {/* Tombol */}
+      <div className="flex justify-end">
+        <button
+          type="submit"
+          className="bg-color-accent hover:bg-[#ffae00] text-black font-semibold px-6 py-2.5 rounded-xl transition"
+        >
+          Posting
+        </button>
+      </div>
+    </form>
   )
 }
 
