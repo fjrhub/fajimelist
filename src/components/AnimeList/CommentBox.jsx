@@ -1,6 +1,7 @@
 import { supabaseAdmin } from '@/libs/supabase'
 import React from 'react'
 import { MessageCircle } from 'lucide-react' // untuk ikon jumlah komentar
+import { authUserSession } from '@/libs/auth-libs'
 
 const CommentBox = async ({ anime_mal_id }) => {
   const { data, error } = await supabaseAdmin
@@ -15,8 +16,11 @@ const CommentBox = async ({ anime_mal_id }) => {
   }
 
   if (!data || data.length === 0) {
-    return <p className="text-gray-400 text-center italic">Belum ada komentar.</p>
+    return (
+      <p className="text-gray-400 text-center italic">Belum ada komentar.</p>
+    )
   }
+  const user = await authUserSession()
 
   return (
     <div className="space-y-4 mt-6">
@@ -27,16 +31,17 @@ const CommentBox = async ({ anime_mal_id }) => {
         >
           {/* Header */}
           <div className="flex items-center justify-between mb-3 text-sm text-gray-400">
-            <p className="text-yellow-400 font-medium">#Comment</p>
+            <p className="text-lg font-semibold text-white">{item.username}</p>
+
             <div className="flex items-center gap-1">
               <MessageCircle size={16} />
-              <span>1</span> {/* jumlah komentar per komentar, bisa diganti nanti */}
+              <span>1</span>{' '}
+              {/* jumlah komentar per komentar, bisa diganti nanti */}
             </div>
           </div>
 
           {/* Isi komentar */}
           <div className="space-y-3">
-            <p className="text-lg font-semibold text-white">{item.username}</p>
             <p className="text-gray-300 leading-relaxed">{item.comment}</p>
           </div>
 
@@ -44,8 +49,8 @@ const CommentBox = async ({ anime_mal_id }) => {
           <div className="flex items-center justify-between mt-4 text-sm text-gray-400">
             <div className="flex items-center gap-3">
               <img
-                src={`https://api.dicebear.com/9.x/adventurer/svg?seed=${item.username}`}
-                alt={item.username}
+                src={user.image}
+                alt={"useraccount"}
                 className="w-8 h-8 rounded-full border border-gray-600"
               />
               <span className="text-gray-300">{item.username}</span>
