@@ -22,7 +22,8 @@ const Page = async ({ params: { id } }) => {
       {/* Header */}
       <section className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
         <h1 className="text-3xl font-bold text-white">
-          {anime.data.title} <span className="text-lg text-gray-400">({anime.data.year})</span>
+          {anime.data.title}{' '}
+          <span className="text-lg text-gray-400">({anime.data.year})</span>
         </h1>
 
         {!data && user && (
@@ -49,7 +50,9 @@ const Page = async ({ params: { id } }) => {
             className="flex flex-col items-center justify-center bg-[#1c1c1c] border border-gray-700 rounded-2xl py-3 hover:bg-[#252525] transition"
           >
             <h3 className="text-sm text-gray-400">{info.label}</h3>
-            <p className="text-xl font-semibold text-white">{info.value ?? '-'}</p>
+            <p className="text-xl font-semibold text-white">
+              {info.value ?? '-'}
+            </p>
           </div>
         ))}
       </section>
@@ -82,7 +85,9 @@ const Page = async ({ params: { id } }) => {
 
       {/* Komentar */}
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold text-white mb-5">💬 Komentar Penonton</h2>
+        <h2 className="text-2xl font-semibold text-white mb-5">
+          💬 Komentar Penonton
+        </h2>
 
         {/* Kotak komentar */}
         <div>
@@ -90,12 +95,15 @@ const Page = async ({ params: { id } }) => {
 
           {user ? (
             <div className="bg-[#111] rounded-xl p-4 border border-gray-700">
-              <h3 className="text-gray-300 mb-2 font-semibold">Tambahkan Komentar</h3>
+              <h3 className="text-gray-300 mb-2 font-semibold">
+                Tambahkan Komentar
+              </h3>
               <CommentInput
                 anime_mal_id={id}
                 user_email={user?.email}
                 username={user?.name}
                 anime_title={anime.data.title}
+                photo_url={user?.image}
               />
             </div>
           ) : (
