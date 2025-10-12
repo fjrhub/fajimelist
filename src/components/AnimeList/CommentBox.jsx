@@ -1,7 +1,6 @@
 import { supabaseAdmin } from '@/libs/supabase'
 import React from 'react'
 import { MessageCircle } from 'lucide-react' // untuk ikon jumlah komentar
-import { authUserSession } from '@/libs/auth-libs'
 
 const CommentBox = async ({ anime_mal_id }) => {
   const { data, error } = await supabaseAdmin
@@ -20,7 +19,6 @@ const CommentBox = async ({ anime_mal_id }) => {
       <p className="text-gray-400 text-center italic">Belum ada komentar.</p>
     )
   }
-  const user = await authUserSession()
 
   return (
     <div className="space-y-4 mt-6">
@@ -49,8 +47,8 @@ const CommentBox = async ({ anime_mal_id }) => {
           <div className="flex items-center justify-between mt-4 text-sm text-gray-400">
             <div className="flex items-center gap-3">
               <img
-                src={user.image}
-                alt={"useraccount"}
+                src={`https://api.dicebear.com/9.x/adventurer/svg?seed=${item.username}`}
+                alt={item.username}
                 className="w-8 h-8 rounded-full border border-gray-600"
               />
               <span className="text-gray-300">{item.username}</span>
