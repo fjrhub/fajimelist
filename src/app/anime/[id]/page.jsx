@@ -84,18 +84,18 @@ const Page = async ({ params: { id } }) => {
       )}
 
       {/* Komentar */}
-      <section className="mb-12">
-        <h2 className="text-2xl font-semibold text-white mb-5">
+      <section className="mb-16 mt-12">
+        {' '}
+        {/* kasih jarak atas dan bawah */}
+        <h2 className="text-2xl font-semibold text-white mb-6">
           💬 Komentar Penonton
         </h2>
-
-        {/* Kotak komentar */}
-        <div>
+        <div className="space-y-10">
           <CommentBox anime_mal_id={id} />
 
           {user ? (
-            <div className="bg-[#111] rounded-xl p-4 border border-gray-700">
-              <h3 className="text-gray-300 mb-2 font-semibold">
+            <div className="bg-[#111] rounded-2xl p-6 border border-gray-700">
+              <h3 className="text-gray-300 mb-4 font-semibold text-lg">
                 Tambahkan Komentar
               </h3>
               <CommentInput
@@ -107,7 +107,7 @@ const Page = async ({ params: { id } }) => {
               />
             </div>
           ) : (
-            <p className="text-gray-400 text-sm p-9 text-center">
+            <p className="text-gray-400 text-sm py-10 text-center">
               Silakan login untuk menulis komentar.
             </p>
           )}
