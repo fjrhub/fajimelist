@@ -35,7 +35,7 @@ const CollectionButton = ({ anime_mal_id, user_email, anime_title, anime_image }
       ) : (
         <button
           onClick={handleCollection}
-          className="px-2 py-1 bg-color-accent"
+          className="bg-color-accent hover:bg-[#ffae00] text-black font-semibold px-4 py-2.5 rounded-xl transition"
         >
           Tambahkan ke Koleksi
         </button>
