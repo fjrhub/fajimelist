@@ -1,6 +1,6 @@
 {
   "name": "cuyanimelist",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "private": true,
   "scripts": {
     "dev": "next dev --turbo",
@@ -14,10 +14,10 @@
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "dotenv": "^16.4.5",
     "lucide-react": "^0.545.0",
-    "next": "14.2.2",
+    "next": "15.5.7",
     "next-auth": "^4.24.11",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "19.2.1",
+    "react-dom": "19.2.1",
     "react-youtube": "^10.1.0"
   },
   "devDependencies": {
